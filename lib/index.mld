@@ -1,0 +1,40 @@
+{0 Mnd 1.0.0}
+
+A simple library for programming with monads.
+It aims to be comprehensible instead of comprehensive
+Everything is standard and already exists in various places, this is simply a selection for easy re-use:
+
+- An interface to define monads with one or two type parameters
+- A small selection of monadic functions such as [(>>=)] or [mapM]
+- Support for [let*] and [let+] syntax
+- A few standard instances of monads
+
+The details can be found in the {{: Mnd/index.html} documentation}.
+Feedback is welcome on the {{: https://github.com/maurobringolf/mnd} GitHub} repository.
+
+{1 Functions}
+
+The individual functions are documented in the {{: Mnd/module-type-MONAD/index.html} [MONAD]} interface.
+
+- {{: Mnd/module-type-MONAD/index.html#val-(%3E%3E=)} [(>>=)]}
+- {{: Mnd/module-type-MONAD/index.html#val-(%3E%3E)} [(>>)]}
+- {{: Mnd/module-type-MONAD/index.html#val-(|%3E%3E)} [(|>>)]}
+- {{: Mnd/module-type-MONAD/index.html#val-foldM} [foldM]}
+- {{: Mnd/module-type-MONAD/index.html#val-fold1M} [fold1M]}
+- {{: Mnd/module-type-MONAD/index.html#val-mapM} [mapM]}
+- {{: Mnd/module-type-MONAD/index.html#val-forM} [forM]}
+- {{: Mnd/module-type-MONAD/index.html#val-iterM} [iterM]}
+- {{: Mnd/module-type-MONAD/index.html#val-ifM} [ifM]}
+
+{1 Syntax}
+
+OCaml 4.08.0 added support for user-defined binding operators to facilitate working with monads and similar structures.
+Monads defined with this library automatically have access to the {{: Mnd/module-type-MONAD/index.html#val-let*} [let*]} and {{: Mnd/module-type-MONAD/index.html#val-let+} [let+]}  syntax.
+
+{1 Instances}
+
+- {{: Mnd/Instances/Option/index.html} [Option]}: Canonical instance of ['a option]. Also known as [Maybe].
+- {{: Mnd/Instances/Result/index.html} [Result]}: Canonical instance of [('a,'b) result]. Also known as [Error] or [Either].
+- {{: Mnd/Instances/Reader/index.html} [Reader]}: Also known as [Env], [Environment] or configuration monad.
+- {{: Mnd/Instances/Writer/index.html} [Writer]}: Also known as logger monad.
+- {{: Mnd/Instances/State/index.html} [State]}

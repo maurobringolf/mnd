@@ -1,0 +1,9 @@
+(library
+ (public_name mnd)
+ (instrumentation
+  (backend bisect_ppx))
+ (modules mnd)
+ (name mnd))
+
+(documentation
+ (package mnd))
