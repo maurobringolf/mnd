@@ -1,4 +1,7 @@
-# Mnd - A minimal monads library for OCaml
+# Mnd - A monads library for OCaml
+
+![build](https://github.com/maurobringolf/mnd/actions/workflows/main.yml/badge.svg)
+![license](https://img.shields.io/github/license/maurobringolf/mnd)
 
 `Mnd` is a simple library for programming with monads.
 It aims to be comprehensible instead of comprehensive.
