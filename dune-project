@@ -1,6 +1,6 @@
 (lang dune 3.0)
 (generate_opam_files true)
-(version 1.0.0)
+(version 1.0.0-alpha)
 (name mnd)
 (source (github maurobringolf/mnd))
 (authors "Mauro Bringolf")
