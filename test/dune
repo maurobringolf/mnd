@@ -1,4 +1,4 @@
 (tests
  (names tests)
  (modules tests)
- (libraries mnd alcotest qcheck-alcotest))
+ (libraries mnd alcotest))
