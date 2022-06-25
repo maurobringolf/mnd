@@ -10,10 +10,11 @@
 (formatting (enabled_for ocaml))
 (package
  (name mnd)
- (synopsis "mnd")
+ (synopsis "A small monads library")
  (description "A small monads library")
  (depends
   (odoc :with-doc)
-  (alcotest :with-test)))
+  (alcotest :with-test)
+  (bisect_ppx :with-test)))
 
 ; See the complete stanza docs at https://dune.readthedocs.io/en/stable/dune-files.html#dune-project
