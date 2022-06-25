@@ -2,11 +2,11 @@
 opam-version: "2.0"
 version: "1.0.0-alpha"
 synopsis: "mnd"
-description: "Minimal monads library"
+description: "A small monads library"
 maintainer: ["Mauro Bringolf"]
 authors: ["Mauro Bringolf"]
-license: "GPL-3.0-or-later"
-homepage: "https://github.com/maurobringolf/mnd"
+homepage: "https://maurobringolf.ch/mnd"
+doc: "https://maurobringolf.ch/mnd"
 bug-reports: "https://github.com/maurobringolf/mnd/issues"
 depends: [
   "dune" {>= "3.0"}

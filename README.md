@@ -1,4 +1,4 @@
-# Mnd - A monads library for OCaml
+# Mnd - A small monads library for OCaml
 
 ![build](https://github.com/maurobringolf/mnd/actions/workflows/main.yml/badge.svg)
 ![license](https://img.shields.io/github/license/maurobringolf/mnd)
