@@ -42,3 +42,10 @@ jobs:
 
       - name: Run tests
         run: eval $(opam env) && make test
+
+      - name: Code coverage to codecov
+        run: |
+          eval $(opam env)
+          rm . -name '*.coverage' | xargs rm -f
+          dune runtest --instrument-with bisect_ppx --force
+          bisect-ppx-report send-to Codecov
