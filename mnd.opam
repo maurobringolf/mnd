@@ -3,8 +3,9 @@ opam-version: "2.0"
 version: "1.0.0-alpha"
 synopsis: "A small monads library"
 description: "A small monads library"
-maintainer: ["Mauro Bringolf"]
-authors: ["Mauro Bringolf"]
+maintainer: ["Mauro Bringolf <mauro@bringolf.com>"]
+authors: ["Mauro Bringolf <mauro@bringolf.com>"]
+license: "MIT"
 homepage: "https://maurobringolf.ch/mnd"
 doc: "https://maurobringolf.ch/mnd"
 bug-reports: "https://github.com/maurobringolf/mnd/issues"

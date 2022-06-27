@@ -1,20 +1,21 @@
 SHELL := /bin/bash
 
-# PHONY targets
-.PHONY: build doc test autoformat coverage
-
+.PHONY: build
 build:
 	dune build
 
+.PHONY: coverage
 coverage:
 	rm . -name '*.coverage' | xargs rm -f
 	dune runtest --instrument-with bisect_ppx --force
 	bisect-ppx-report html
 	bisect-ppx-report summary
 
+.PHONY: docs
 docs:
 	dune build @doc
 
+.PHONY: publish-docs
 publish-docs:
 	dune build @doc
 	if [ -z "`git status --porcelain`" ]; then\
@@ -22,11 +23,14 @@ publish-docs:
 	else\
 		echo "Cannot publish docs: Repository not clean"; fi
 
+.PHONY: test
 test:
 	dune runtest -f
 
+.PHONY: autoformat
 autoformat:
 	dune build @fmt --auto-promote
 
+.PHONY: clean
 clean:
 	dune clean
