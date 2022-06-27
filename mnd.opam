@@ -11,6 +11,7 @@ doc: "https://maurobringolf.ch/mnd"
 bug-reports: "https://github.com/maurobringolf/mnd/issues"
 depends: [
   "dune" {>= "3.0"}
+  "ocaml" {>= "4.08.0"}
   "odoc" {with-doc}
   "alcotest" {with-test}
   "bisect_ppx" {with-test}

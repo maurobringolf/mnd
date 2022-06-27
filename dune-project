@@ -14,6 +14,7 @@
  (synopsis "A small monads library")
  (description "A small monads library")
  (depends
+  (ocaml (>= 4.08.0))
   (odoc :with-doc)
   (alcotest :with-test)
   (bisect_ppx :with-test)))
