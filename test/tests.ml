@@ -1,7 +1,43 @@
+module CustomOptionMonad = Mnd.Make (struct
+  type 'a t = 'a option
+
+  let return _ = None
+  let bind _ _ = None
+  let map _ _ = None
+end)
+
+module CustomResultMonad = Mnd.Make2 (struct
+  type ('a, 'b) t = ('a, 'b) result
+
+  let return = Result.ok
+  let bind = Result.bind
+  let map = Result.map
+end)
+
 let () =
   let open Alcotest in
   run "Monad"
     [
+      ( "Mnd.Make",
+        [
+          test_case "Mnd.Make: custom option instance" `Quick (fun () ->
+              Alcotest.(check (option int))
+                "let*"
+                (let open CustomOptionMonad in
+                let* x = Some 17 in
+                Some (x + 3))
+                None);
+        ] );
+      ( "Mnd.Make2",
+        [
+          test_case "Mnd.Make2: custom result instance" `Quick (fun () ->
+              Alcotest.(check (result int string))
+                "let*"
+                (let open CustomResultMonad in
+                let* x = return 17 in
+                return (4 + x))
+                (Result.Ok 21));
+        ] );
       ( "Mnd.Instances.Option",
         let open Mnd.Instances.Option in
         [
