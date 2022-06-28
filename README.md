@@ -9,5 +9,14 @@
 It aims to be comprehensible instead of comprehensive.
 Everything is standard and already exists in various places, this is simply a selection for easy re-use.
 The code is in [a single file](lib/mnd.ml) and has no dependencies.
-
 The documentation is available [online](https://maurobringolf.ch/mnd).
+
+## Installation
+
+It is recommended to install it via `opam`:
+
+```
+opam install mnd
+```
+
+We use [semantic versioning](https://semver.org) for releases.
