@@ -54,8 +54,23 @@ module type MONAD2 = sig
   val ifM : bool -> (unit -> (unit, 'e) t) -> (unit, 'e) t
 end
 
+module type MONAD2_WITH_AND = sig
+  include MONAD2
+
+  val ( and+ ) : ('a1, 'b) t -> ('a2, 'b) t -> ('a1 * 'a2, 'b) t
+  val ( and* ) : ('a1, 'b) t -> ('a2, 'b) t -> ('a1 * 'a2, 'b) t
+end
+
 module Make2 : functor (M : MONAD2_DEF) ->
   MONAD2 with type ('a, 'b) t = ('a, 'b) M.t
+
+module Make2WithProduct : functor
+  (M : sig
+     include MONAD2_DEF
+
+     val product : ('a1, 'b) t -> ('a2, 'b) t -> ('a1 * 'a2, 'b) t
+   end)
+  -> MONAD2_WITH_AND with type ('a, 'b) t = ('a, 'b) M.t
 
 (** {1 Unary monads}
    A unary monad interprets a type ['a t] as computation of values of type ['a].
@@ -120,7 +135,7 @@ module Instances : sig
   module Option : MONAD with type 'a t = 'a option
 
   module Result : sig
-    include MONAD2 with type ('a, 'b) t = ('a, 'b) result
+    include MONAD2_WITH_AND with type ('a, 'b) t = ('a, 'b) result
 
     val error : 'b -> ('a, 'b) t
   end

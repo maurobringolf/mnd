@@ -48,6 +48,13 @@ module type MONAD2 = sig
   val ifM : bool -> (unit -> (unit, 'e) t) -> (unit, 'e) t
 end
 
+module type MONAD2_WITH_AND = sig
+  include MONAD2
+
+  val ( and+ ) : ('a1, 'b) t -> ('a2, 'b) t -> ('a1 * 'a2, 'b) t
+  val ( and* ) : ('a1, 'b) t -> ('a2, 'b) t -> ('a1 * 'a2, 'b) t
+end
+
 module Make2 (M : MONAD2_DEF) : MONAD2 with type ('a, 'b) t = ('a, 'b) M.t =
 struct
   include M
@@ -76,6 +83,18 @@ struct
   let forM xs m = mapM m xs
   let iterM m xs = mapM m xs >> return ()
   let ifM cond m = if cond then m () else return ()
+end
+
+module Make2WithProduct (M : sig
+  include MONAD2_DEF
+
+  val product : ('a1, 'b) t -> ('a2, 'b) t -> ('a1 * 'a2, 'b) t
+end) =
+struct
+  include Make2 (M)
+
+  let ( and+ ) = M.product
+  let ( and* ) = M.product
 end
 
 module type MONAD_DEF = sig
@@ -124,12 +143,17 @@ module Instances = struct
   end)
 
   module Result = struct
-    include Make2 (struct
+    include Make2WithProduct (struct
       type ('a, 'b) t = ('a, 'b) Stdlib.Result.t
 
       let bind = Stdlib.Result.bind
       let map = Stdlib.Result.map
       let return = Stdlib.Result.ok
+
+      let product r1 r2 =
+        match (r1, r2) with
+        | Ok x1, Ok x2 -> Ok (x1, x2)
+        | Ok _, Error e | Error e, _ -> Error e
     end)
 
     let error = Stdlib.Result.error

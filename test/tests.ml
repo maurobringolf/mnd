@@ -118,6 +118,11 @@ let () =
                 (let+ x = return "first" in
                  x ^ "second")
                 (Result.Ok "firstsecond"));
+          test_case "and+" `Quick (fun () ->
+              Alcotest.(check (result string string))
+                "and+" (Result.Error "second")
+                (let+ x = return "first" and+ y = error "second" in
+                 x ^ y));
           test_case "Ok >> Ok" `Quick (fun () ->
               Alcotest.(check (result string string))
                 ">>"

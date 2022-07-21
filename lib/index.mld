@@ -34,7 +34,10 @@ Monads defined with this library automatically have access to the {{: Mnd/module
 {1 Instances}
 
 - {{: Mnd/Instances/Option/index.html} [Option]}: Canonical instance of ['a option]. Also known as [Maybe].
-- {{: Mnd/Instances/Result/index.html} [Result]}: Canonical instance of [('a,'b) result]. Also known as [Error] or [Either].
+- {{: Mnd/Instances/Result/index.html} [Result]}:
+  Canonical instance of [('a,'b) result]. Also known as [Error] or [Either].
+  Provides [and*] and [and+] with the semantics that if either compuation fails, the combined product computation also fails.
+  If both arguments of a product fail then the result is the error of the first one.
 - {{: Mnd/Instances/Reader/index.html} [Reader]}: Also known as [Env], [Environment] or configuration monad.
 - {{: Mnd/Instances/Writer/index.html} [Writer]}: Also known as logger monad.
 - {{: Mnd/Instances/State/index.html} [State]}
