@@ -18,3 +18,7 @@
 ## 1.0.0 [2022-06-28]
 
 The first version available on opam.
+
+## 1.0.0-alpha [2022-06-24]
+
+The first public version.
