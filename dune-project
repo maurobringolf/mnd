@@ -1,6 +1,6 @@
 (lang dune 3.0)
 (name mnd)
-(version 1.0.0)
+(version 1.1.0)
 (source (github maurobringolf/mnd))
 (authors "Mauro Bringolf <mauro@bringolf.com>")
 (maintainers "Mauro Bringolf <mauro@bringolf.com>")
